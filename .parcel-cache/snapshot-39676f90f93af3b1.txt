@@ -25,7 +25,7 @@
 104C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\@parcel\graph\src\ContentGraph.js133580591950793437 0
 107C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\lightningcss\node\composeVisitors.js133580591948499975 0
 87C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\cosmiconfig\dist133580591954947824 1
-72C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\src\index.html133580760717813383 0
+72C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\src\index.html133580768006006699 0
 104C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\css-select\lib\esm\general.js.map133580591957062371 0
 89C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\tslib\tslib.es6.js133580591944181446 0
 110C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\css-tree\cjs\syntax\node\IdSelector.cjs133580591958412238 0
@@ -81,7 +81,7 @@
 99C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\css-tree\cjs\utils\clone.cjs133580591952237897 0
 122C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mdb_copy.c133580591956738408 0
 107C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\csso\lib\replace\atrule\keyframes.js133580591960639056 0
-62C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist133580763126373954 1
+62C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist133580768893251527 1
 102C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\caniuse-lite\data\regions\AX.js133580591957653883 0
 82C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\.bin\parcel133580591979148898 0
 90C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\css-tree\lib\syntax133580591965195764 1
@@ -153,7 +153,7 @@
 141C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeUnusedNS.js133580591959057332 0
 120C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\caniuse-lite\data\features\css-in-out-of-range.js133580591964692980 0
 107C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\@parcel\core\src\summarizeRequest.js133580591963726905 0
-72C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\src\js\main.ts133580721007678623 0
+72C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\src\js\main.ts133580768318754147 0
 95C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\@swc\core-win32-x64-msvc133580591942809671 1
 94C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\svgo\lib\stringifier.js133580591953387116 0
 123C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\css-select\node_modules\entities\lib\esm\decode.d.ts133580591959057332 0
@@ -168,7 +168,7 @@
 101C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\commander\package-support.json133580591943884421 0
 89C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\svgo\lib\svgo.d.ts133580591953982811 0
 88C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\@msgpackr-extract133580591987639850 1
-76C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\src\css\styles.css133580763122434666 0
+76C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\src\css\styles.css133580768891840649 0
 119C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\css-select\node_modules\entities\lib\escape.d.ts133580591959493851 0
 102C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\svgo\plugins\removeEmptyText.js133580591960045658 0
 92C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\dotenv-expand\LICENSE133580591943844336 0
@@ -5862,8 +5862,8 @@
 84C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\.bin\svgo.cmd133580591979148898 0
 98C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\.bin\update-browserslist-db133580591979160644 0
 102C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\node_modules\.bin\update-browserslist-db.cmd133580591979160644 0
-73C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.html133580761897154258 0
-80C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.90c5fab6.js133580761897256695 0
-84C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.90c5fab6.js.map133580761897306260 0
-81C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.77a9bc14.css133580763126189682 0
-85C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.77a9bc14.css.map133580763126373954 0
+73C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.html133580768008716998 0
+81C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.77a9bc14.css133580768893095224 0
+80C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.90c5fab6.js133580768893095224 0
+85C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.77a9bc14.css.map133580768893251527 0
+84C:\Users\eriks\Desktop\Skola\Termin 2\TypeScript\Uppgift2\dist\index.90c5fab6.js.map133580768893251527 0

@@ -17,6 +17,7 @@ function addListItem(): void {
     //Hämtar mina värden från tabellen
     const textInput = document.getElementById('task') as HTMLInputElement;
     const priorityInput = document.getElementById('priority') as HTMLInputElement;
+    const errorMsgEl = document.getElementById('errorMsg') as HTMLElement;
 
     const toDoTextValue = textInput.value;
     const priorityValue = parseInt(priorityInput.value);
@@ -24,14 +25,13 @@ function addListItem(): void {
 
     if (!toDoTextValue.trim()) {
         //Felmeddelande om formuläret är tomt
-        console.log("Saknar input...");
+        errorMsgEl.innerText = "*Vänligen fyll i textfältet.";
         return;
     } else {
+        errorMsgEl.innerText = ""; // Töm felmeddelandet om alla fält är ifyllda korrekt
         const newToDoItem = new listItem(toDoTextValue, completionValue, priorityValue);
         manager.addListItem(newToDoItem);
         textInput.value = ''
-        //Kontroll av kod
-        console.log(toDoTextValue, completionValue, priorityValue)
 
         //Kör funktion för att ladda in ToDo listan
         renderToDo();

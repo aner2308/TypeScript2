@@ -14,6 +14,13 @@ body {
   box-shadow: 0 0 10px #858585;
 }
 
+#errorMsg {
+  color: #d00d0d;
+  max-width: 500px;
+  margin: 10px auto;
+  font-size: 1em;
+}
+
 h1 {
   text-align: center;
 }

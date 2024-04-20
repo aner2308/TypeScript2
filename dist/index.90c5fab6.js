@@ -599,19 +599,19 @@ function addListItem() {
     //Hämtar mina värden från tabellen
     const textInput = document.getElementById("task");
     const priorityInput = document.getElementById("priority");
+    const errorMsgEl = document.getElementById("errorMsg");
     const toDoTextValue = textInput.value;
     const priorityValue = parseInt(priorityInput.value);
     const completionValue = false;
     if (!toDoTextValue.trim()) {
         //Felmeddelande om formuläret är tomt
-        console.log("Saknar input...");
+        errorMsgEl.innerText = "*V\xe4nligen fyll i textf\xe4ltet.";
         return;
     } else {
+        errorMsgEl.innerText = ""; // Töm felmeddelandet om alla fält är ifyllda korrekt
         const newToDoItem = new (0, _listItem.listItem)(toDoTextValue, completionValue, priorityValue);
         manager.addListItem(newToDoItem);
         textInput.value = "";
-        //Kontroll av kod
-        console.log(toDoTextValue, completionValue, priorityValue);
         //Kör funktion för att ladda in ToDo listan
         renderToDo();
     }
