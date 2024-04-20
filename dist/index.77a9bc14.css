@@ -2,13 +2,14 @@ body {
   background: linear-gradient(45deg, pink, #c961c9);
   min-height: 100vh;
   font-family: Roboto, sans-serif;
+  font-size: 1.2em;
 }
 
 .container {
   background-color: #ffffffb3;
   width: 80vw;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 20px;
   box-shadow: 0 0 10px #858585;
 }
@@ -69,5 +70,11 @@ button {
 
 .completed, .check-box:checked + span {
   text-decoration: line-through;
+}
+
+@media screen and (width <= 400px) {
+  body {
+    font-size: 1em;
+  }
 }
 /*# sourceMappingURL=index.77a9bc14.css.map */
