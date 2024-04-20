@@ -2,13 +2,13 @@ import { toDo } from './interface';
 
 export class listItem implements toDo {
     task: string;
-    completed: boolean;
+    completionValue: boolean;
     priority: number;
 
-    constructor(task: string, completed: boolean, priority: number) {
+    constructor(task: string, completionValue: boolean, priority: number) {
         
         this.task = task;
-        this.completed = completed;
+        this.completionValue = completionValue;
         this.priority = priority;
     }
 

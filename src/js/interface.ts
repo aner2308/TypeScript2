@@ -1,5 +1,5 @@
 export interface toDo {
     task: string;
-    completed: boolean;
+    completionValue: boolean;
     priority: number;
 }

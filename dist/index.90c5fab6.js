@@ -586,6 +586,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"hYrgI":[function(require,module,exports) {
 var _listItem = require("./listItem");
 var _listItemManager = require("./listItemManager");
+var _localStorageUtil = require("./localStorageUtil");
 document.addEventListener("DOMContentLoaded", ()=>{
     const form = document.getElementById("todo-form");
     form.addEventListener("submit", (event)=>{
@@ -640,8 +641,10 @@ function renderToDo() {
                 const checkBox = document.createElement("input");
                 checkBox.type = "checkbox";
                 checkBox.className = "check-box";
+                //Sätter checkboxens status baserat på completionValue
+                checkBox.checked = item.completionValue;
                 // Lägg till en händelselyssnare för att hantera när checkboxen är markerad
-                checkBox.addEventListener("change", ()=>checkboxChange(item, li));
+                checkBox.addEventListener("change", ()=>checkboxChange(item));
                 //Raderingsknapp
                 const deleteButton = document.createElement("button");
                 deleteButton.className = "deleteBtn";
@@ -659,12 +662,15 @@ function renderToDo() {
             });
         }
     }
+    // Spara den uppdaterade listan till localStorage
+    (0, _localStorageUtil.LocalStorageUtil).saveListItems(manager.getListItems());
 }
-function checkboxChange(item, listItemElement) {
-    const checkBox = listItemElement.querySelector(".check-box");
-    const taskText = listItemElement.querySelector("span");
-    if (checkBox.checked) taskText.style.textDecoration = "line-through";
-    else taskText.style.textDecoration = "none";
+//Funktion för checkbox
+function checkboxChange(item) {
+    // Uppdatera completionValue baserat på checkboxens status
+    item.completionValue = !item.completionValue;
+    // Spara den uppdaterade listan till localStorage
+    (0, _localStorageUtil.LocalStorageUtil).saveListItems(manager.getListItems());
 }
 //Funktionen kör delete på det list item som hör till deleteknappen, och renderar om listan
 function deleteItem(item) {
@@ -673,14 +679,14 @@ function deleteItem(item) {
 }
 renderToDo();
 
-},{"./listItem":"2g8Io","./listItemManager":"1dwmK"}],"2g8Io":[function(require,module,exports) {
+},{"./listItem":"2g8Io","./listItemManager":"1dwmK","./localStorageUtil":"5E5oR"}],"2g8Io":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "listItem", ()=>listItem);
 class listItem {
-    constructor(task, completed, priority){
+    constructor(task, completionValue, priority){
         this.task = task;
-        this.completed = completed;
+        this.completionValue = completionValue;
         this.priority = priority;
     }
 }

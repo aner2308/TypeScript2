@@ -1,5 +1,6 @@
 import { listItem } from "./listItem";
 import { listItemManager } from "./listItemManager";
+import { LocalStorageUtil } from "./localStorageUtil";
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('todo-form')! as HTMLFormElement;
@@ -67,8 +68,10 @@ function renderToDo(): void {
                 const checkBox = document.createElement('input');
                 checkBox.type = 'checkbox';
                 checkBox.className = 'check-box';
+                //Sätter checkboxens status baserat på completionValue
+                checkBox.checked = item.completionValue
                 // Lägg till en händelselyssnare för att hantera när checkboxen är markerad
-                checkBox.addEventListener('change', () => checkboxChange(item, li));
+                checkBox.addEventListener('change', () => checkboxChange(item));
 
                 //Raderingsknapp
                 const deleteButton = document.createElement('button');
@@ -90,17 +93,19 @@ function renderToDo(): void {
             });
         }
     }
+    
+    // Spara den uppdaterade listan till localStorage
+    LocalStorageUtil.saveListItems(manager.getListItems());
 }
 
-function checkboxChange(item: listItem, listItemElement: HTMLLIElement): void {
-    const checkBox = listItemElement.querySelector('.check-box') as HTMLInputElement;
-    const taskText = listItemElement.querySelector('span') as HTMLElement;
 
-    if(checkBox.checked) {
-        taskText.style.textDecoration = 'line-through';
-    } else {
-        taskText.style.textDecoration = 'none';
-    }
+//Funktion för checkbox
+function checkboxChange(item: listItem): void {
+    // Uppdatera completionValue baserat på checkboxens status
+    item.completionValue = !item.completionValue;
+
+    // Spara den uppdaterade listan till localStorage
+    LocalStorageUtil.saveListItems(manager.getListItems());
 }
 
 //Funktionen kör delete på det list item som hör till deleteknappen, och renderar om listan

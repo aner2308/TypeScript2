@@ -1,27 +1,69 @@
 body {
     font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, pink, rgb(201, 97, 201));
+    min-height: 100vh;
+    font-family: "Roboto", sans-serif;
   }
   
   .container {
-    max-width: 600px;
+    max-width: 500px;
+    width: 80vw;
     margin: 0 auto;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 0px 10px rgb(133, 133, 133);
   }
   
   h1 {
     text-align: center;
   }
+
+  h2 {
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    font-weight: 400;
+  }
   
   form {
     margin-bottom: 20px;
+    font-weight: 600;
   }
   
   input[type="text"], select {
     margin-right: 10px;
+    font-weight: 400;
+    padding: 5px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(133, 133, 133, 0.404);
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  #todo-list-1,
+  #todo-list-2,
+  #todo-list-3 {
+    padding: 5px;
+  }
+
+  .list-item-container {
+    margin-left: 10px;
+  }
+
+  .listor {
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(133, 133, 133, 0.404);
   }
   
   button {
     cursor: pointer;
+    padding: 5px;
+    border: none;
+    background-color: white;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 10px rgba(133, 133, 133, 0.404);
   }
   
   .todo {
@@ -31,4 +73,9 @@ body {
   .completed {
     text-decoration: line-through;
   }
+
+  .check-box:checked + span {
+    text-decoration: line-through;
+}
+
   

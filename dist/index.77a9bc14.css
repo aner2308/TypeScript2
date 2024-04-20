@@ -1,34 +1,73 @@
 body {
-  font-family: Arial, sans-serif;
+  background: linear-gradient(45deg, pink, #c961c9);
+  min-height: 100vh;
+  font-family: Roboto, sans-serif;
 }
 
 .container {
-  max-width: 600px;
+  background-color: #ffffffb3;
+  width: 80vw;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
+  box-shadow: 0 0 10px #858585;
 }
 
 h1 {
   text-align: center;
 }
 
+h2 {
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  font-weight: 400;
+}
+
 form {
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 input[type="text"], select {
+  border: none;
   margin-right: 10px;
+  padding: 5px;
+  font-weight: 400;
+  box-shadow: 0 0 10px #85858567;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#todo-list-1, #todo-list-2, #todo-list-3 {
+  padding: 5px;
+}
+
+.list-item-container {
+  margin-left: 10px;
+}
+
+.listor {
+  background-color: #fff;
+  box-shadow: 0 0 10px #85858567;
 }
 
 button {
   cursor: pointer;
+  background-color: #fff;
+  border: none;
+  margin-bottom: 10px;
+  padding: 5px;
+  box-shadow: 0 0 10px #85858567;
 }
 
 .todo {
   margin-bottom: 5px;
 }
 
-.completed {
+.completed, .check-box:checked + span {
   text-decoration: line-through;
 }
 /*# sourceMappingURL=index.77a9bc14.css.map */
