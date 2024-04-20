@@ -590,7 +590,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const form = document.getElementById("todo-form");
     form.addEventListener("submit", (event)=>{
         event.preventDefault();
-        console.log("HEJ!");
         addListItem();
     });
 });
@@ -617,7 +616,40 @@ function addListItem() {
         renderToDo();
     }
 }
-function renderToDo() {}
+function renderToDo() {
+    const list = manager.getListItems();
+    // Loopa igenom listan och dela upp objekten baserat på deras prioritet
+    const priorityLists = {
+        1: [],
+        2: [],
+        3: []
+    };
+    list.forEach((item)=>{
+        priorityLists[item.priority].push(item);
+    });
+    // Loopa igenom varje prioritetlista och rendera varje listobjekt i rätt <ul>
+    for(let priority in priorityLists){
+        const toDoList = document.getElementById(`todo-list-${priority}`);
+        if (toDoList) {
+            toDoList.innerHTML = ""; // Rensa listan innan du renderar om den
+            priorityLists[priority].forEach((item)=>{
+                const li = document.createElement("li");
+                li.innerHTML = `<strong>${item.task}</strong><br>`;
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Radera";
+                deleteButton.className = "deleteBtn";
+                deleteButton.addEventListener("click", ()=>deleteItem(item));
+                li.appendChild(deleteButton);
+                toDoList.appendChild(li);
+            });
+        }
+    }
+}
+function deleteItem(item) {
+    manager.deleteListItem(item);
+    renderToDo();
+}
+renderToDo();
 
 },{"./listItem":"2g8Io","./listItemManager":"1dwmK"}],"2g8Io":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -675,9 +707,12 @@ class listItemManager {
         this.listItems.push(listItem);
         (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
     }
-    deleteListItem(index) {
-        this.listItems.splice(index, 1);
-        (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
+    deleteListItem(item) {
+        const index = this.listItems.findIndex((listItem)=>listItem === item);
+        if (index !== -1) {
+            this.listItems.splice(index, 1);
+            (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
+        }
     }
     getListItems() {
         return this.listItems;

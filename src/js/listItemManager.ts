@@ -13,9 +13,12 @@ export class listItemManager {
         LocalStorageUtil.saveListItems(this.listItems);
     }
 
-    public deleteListItem(index: number): void {
-        this.listItems.splice(index, 1);
-        LocalStorageUtil.saveListItems(this.listItems);
+    public deleteListItem(item: listItem): void {
+        const index = this.listItems.findIndex(listItem => listItem === item);
+        if (index !== -1) {
+            this.listItems.splice(index, 1);
+            LocalStorageUtil.saveListItems(this.listItems);
+        }
     }
 
     public getListItems(): listItem[] {
