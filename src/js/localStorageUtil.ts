@@ -1,7 +1,7 @@
 import { listItem } from "./listItem";
 export class LocalStorageUtil {
 
-    static saveContacts(listItems: listItem[]) {
+    static saveListItems(listItems: listItem[]) {
         localStorage.setItem('listItems', JSON.stringify(listItems)); // Sparar hela toDo-arrayen till localStorage
     }
 
