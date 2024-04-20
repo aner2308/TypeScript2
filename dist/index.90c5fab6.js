@@ -636,6 +636,12 @@ function renderToDo() {
                 //Skapa en div för listobjektet och raderingsknappen
                 const listItemContainer = document.createElement("div");
                 listItemContainer.classList.add("list-item-container");
+                // Skapa en checkruta
+                const checkBox = document.createElement("input");
+                checkBox.type = "checkbox";
+                checkBox.className = "check-box";
+                // Lägg till en händelselyssnare för att hantera när checkboxen är markerad
+                checkBox.addEventListener("change", ()=>checkboxChange(item, li));
                 //Raderingsknapp
                 const deleteButton = document.createElement("button");
                 deleteButton.className = "deleteBtn";
@@ -646,12 +652,19 @@ function renderToDo() {
                 const toDoText = document.createElement("span");
                 toDoText.innerHTML = item.task;
                 listItemContainer.appendChild(deleteButton);
+                listItemContainer.appendChild(checkBox);
                 listItemContainer.appendChild(toDoText);
                 li.appendChild(listItemContainer);
                 toDoList.appendChild(li);
             });
         }
     }
+}
+function checkboxChange(item, listItemElement) {
+    const checkBox = listItemElement.querySelector(".check-box");
+    const taskText = listItemElement.querySelector("span");
+    if (checkBox.checked) taskText.style.textDecoration = "line-through";
+    else taskText.style.textDecoration = "none";
 }
 //Funktionen kör delete på det list item som hör till deleteknappen, och renderar om listan
 function deleteItem(item) {
