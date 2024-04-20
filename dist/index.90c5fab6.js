@@ -586,6 +586,13 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"hYrgI":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+document.addEventListener("DOMContentLoaded", ()=>{
+    const form = document.getElementById("todo-form");
+    form.addEventListener("submit", (event)=>{
+        event.preventDefault();
+        console.log("HEJ!");
+    });
+});
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
