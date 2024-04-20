@@ -8,7 +8,7 @@ export class listItemManager {
         this.listItems = LocalStorageUtil.loadListItems();
     }
 
-    public addListItem (listItem: listItem): void {
+    public addListItem(listItem: listItem): void {
         this.listItems.push(listItem);
         LocalStorageUtil.saveListItems(this.listItems);
     }

@@ -584,15 +584,52 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"hYrgI":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
+var _listItem = require("./listItem");
+var _listItemManager = require("./listItemManager");
 document.addEventListener("DOMContentLoaded", ()=>{
     const form = document.getElementById("todo-form");
     form.addEventListener("submit", (event)=>{
         event.preventDefault();
         console.log("HEJ!");
+        addListItem();
     });
 });
+const manager = new (0, _listItemManager.listItemManager)();
+function addListItem() {
+    console.log("TJA!");
+    //Hämtar mina värden från tabellen
+    const textInput = document.getElementById("task");
+    const priorityInput = document.getElementById("priority");
+    const toDoTextValue = textInput.value;
+    const priorityValue = parseInt(priorityInput.value);
+    const completionValue = false;
+    if (!toDoTextValue.trim()) {
+        //Felmeddelande om formuläret är tomt
+        console.log("Saknar input...");
+        return;
+    } else {
+        const newToDoItem = new (0, _listItem.listItem)(toDoTextValue, completionValue, priorityValue);
+        manager.addListItem(newToDoItem);
+        textInput.value = "";
+        //Kontroll av kod
+        console.log(toDoTextValue, completionValue, priorityValue);
+        //Kör funktion för att ladda in ToDo listan
+        renderToDo();
+    }
+}
+function renderToDo() {}
+
+},{"./listItem":"2g8Io","./listItemManager":"1dwmK"}],"2g8Io":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "listItem", ()=>listItem);
+class listItem {
+    constructor(task, completed, priority){
+        this.task = task;
+        this.completed = completed;
+        this.priority = priority;
+    }
+}
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -624,6 +661,44 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["3L0Bc","hYrgI"], "hYrgI", "parcelRequirea041")
+},{}],"1dwmK":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "listItemManager", ()=>listItemManager);
+var _localStorageUtil = require("./localStorageUtil");
+class listItemManager {
+    constructor(){
+        this.listItems = [];
+        this.listItems = (0, _localStorageUtil.LocalStorageUtil).loadListItems();
+    }
+    addListItem(listItem) {
+        this.listItems.push(listItem);
+        (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
+    }
+    deleteListItem(index) {
+        this.listItems.splice(index, 1);
+        (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
+    }
+    getListItems() {
+        return this.listItems;
+    }
+}
+
+},{"./localStorageUtil":"5E5oR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5E5oR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "LocalStorageUtil", ()=>LocalStorageUtil);
+class LocalStorageUtil {
+    static saveListItems(listItems) {
+        localStorage.setItem("listItems", JSON.stringify(listItems)); // Sparar hela toDo-arrayen till localStorage
+    }
+    static loadListItems() {
+        const ToDoStr = localStorage.getItem("listItems");
+        if (ToDoStr) return JSON.parse(ToDoStr);
+        else return []; // Om inga ToDo finns lagrade, returnera en tom array
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["3L0Bc","hYrgI"], "hYrgI", "parcelRequirea041")
 
 //# sourceMappingURL=index.90c5fab6.js.map
