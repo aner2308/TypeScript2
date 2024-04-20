@@ -1,0 +1,17 @@
+{
+  "name": "uppgift2",
+  "version": "1.0.0",
+  "description": "",
+  "source": "./src/index.html",
+  "type": "module",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "keywords": [],
+  "author": "Anton Eriksson",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}

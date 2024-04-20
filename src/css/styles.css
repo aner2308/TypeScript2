@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"], select {
+    margin-right: 10px;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  .todo {
+    margin-bottom: 5px;
+  }
+  
+  .completed {
+    text-decoration: line-through;
+  }
+  
