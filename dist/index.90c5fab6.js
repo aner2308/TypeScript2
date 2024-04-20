@@ -595,7 +595,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 const manager = new (0, _listItemManager.listItemManager)();
 function addListItem() {
-    console.log("TJA!");
     //Hämtar mina värden från tabellen
     const textInput = document.getElementById("task");
     const priorityInput = document.getElementById("priority");
@@ -631,20 +630,30 @@ function renderToDo() {
     for(let priority in priorityLists){
         const toDoList = document.getElementById(`todo-list-${priority}`);
         if (toDoList) {
-            toDoList.innerHTML = ""; // Rensa listan innan du renderar om den
+            toDoList.innerHTML = ""; // Rensa listan innan den laddas om
             priorityLists[priority].forEach((item)=>{
                 const li = document.createElement("li");
-                li.innerHTML = `<strong>${item.task}</strong><br>`;
+                //Skapa en div för listobjektet och raderingsknappen
+                const listItemContainer = document.createElement("div");
+                listItemContainer.classList.add("list-item-container");
+                //Raderingsknapp
                 const deleteButton = document.createElement("button");
-                deleteButton.textContent = "Radera";
                 deleteButton.className = "deleteBtn";
+                //Lägger till soptunna som raderingssymbol
+                deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                //Event listener för knappen
                 deleteButton.addEventListener("click", ()=>deleteItem(item));
-                li.appendChild(deleteButton);
+                const toDoText = document.createElement("span");
+                toDoText.innerHTML = item.task;
+                listItemContainer.appendChild(deleteButton);
+                listItemContainer.appendChild(toDoText);
+                li.appendChild(listItemContainer);
                 toDoList.appendChild(li);
             });
         }
     }
 }
+//Funktionen kör delete på det list item som hör till deleteknappen, och renderar om listan
 function deleteItem(item) {
     manager.deleteListItem(item);
     renderToDo();
