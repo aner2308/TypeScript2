@@ -586,7 +586,6 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"hYrgI":[function(require,module,exports) {
 var _listItem = require("./listItem");
 var _listItemManager = require("./listItemManager");
-var _localStorageUtil = require("./localStorageUtil");
 document.addEventListener("DOMContentLoaded", ()=>{
     const form = document.getElementById("todo-form");
     form.addEventListener("submit", (event)=>{
@@ -662,15 +661,11 @@ function renderToDo() {
             });
         }
     }
-    // Spara den uppdaterade listan till localStorage
-    (0, _localStorageUtil.LocalStorageUtil).saveListItems(manager.getListItems());
 }
-//Funktion för checkbox
+//Funktion för att tolka checkbox och spara den i localstorage, och rendera om listan
 function checkboxChange(item) {
-    // Uppdatera completionValue baserat på checkboxens status
-    item.completionValue = !item.completionValue;
-    // Spara den uppdaterade listan till localStorage
-    (0, _localStorageUtil.LocalStorageUtil).saveListItems(manager.getListItems());
+    manager.completeListItem(item);
+    renderToDo();
 }
 //Funktionen kör delete på det list item som hör till deleteknappen, och renderar om listan
 function deleteItem(item) {
@@ -679,11 +674,13 @@ function deleteItem(item) {
 }
 renderToDo();
 
-},{"./listItem":"2g8Io","./listItemManager":"1dwmK","./localStorageUtil":"5E5oR"}],"2g8Io":[function(require,module,exports) {
+},{"./listItem":"2g8Io","./listItemManager":"1dwmK"}],"2g8Io":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+//Skapar klass med värdena från toDooch exporterar den
 parcelHelpers.export(exports, "listItem", ()=>listItem);
 class listItem {
+    //Constructor till klassen listItem
     constructor(task, completionValue, priority){
         this.task = task;
         this.completionValue = completionValue;
@@ -731,10 +728,18 @@ class listItemManager {
         this.listItems = [];
         this.listItems = (0, _localStorageUtil.LocalStorageUtil).loadListItems();
     }
+    //Funktion för att lägga till items i listan och spara i local storage
     addListItem(listItem) {
         this.listItems.push(listItem);
         (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
     }
+    //Funktion för att avcheckade items i listan sparas i local storage
+    completeListItem(item) {
+        const index = this.listItems.indexOf(item);
+        this.listItems[index].completionValue = true;
+        (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
+    }
+    //Funktion för att radera items från listan och spara i local storage
     deleteListItem(item) {
         const index = this.listItems.findIndex((listItem)=>listItem === item);
         if (index !== -1) {
@@ -742,6 +747,7 @@ class listItemManager {
             (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
         }
     }
+    //Funktion för att hämta alla listItems till sidan
     getListItems() {
         return this.listItems;
     }

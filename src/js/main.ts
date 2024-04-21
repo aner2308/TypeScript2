@@ -1,6 +1,5 @@
 import { listItem } from "./listItem";
 import { listItemManager } from "./listItemManager";
-import { LocalStorageUtil } from "./localStorageUtil";
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('todo-form')! as HTMLFormElement;
@@ -93,19 +92,13 @@ function renderToDo(): void {
             });
         }
     }
-    
-    // Spara den uppdaterade listan till localStorage
-    LocalStorageUtil.saveListItems(manager.getListItems());
 }
 
 
-//Funktion för checkbox
+//Funktion för att tolka checkbox och spara den i localstorage, och rendera om listan
 function checkboxChange(item: listItem): void {
-    // Uppdatera completionValue baserat på checkboxens status
-    item.completionValue = !item.completionValue;
-
-    // Spara den uppdaterade listan till localStorage
-    LocalStorageUtil.saveListItems(manager.getListItems());
+    manager.completeListItem(item);
+    renderToDo();
 }
 
 //Funktionen kör delete på det list item som hör till deleteknappen, och renderar om listan
