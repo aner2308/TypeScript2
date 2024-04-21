@@ -586,7 +586,9 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"hYrgI":[function(require,module,exports) {
 var _listItem = require("./listItem");
 var _listItemManager = require("./listItemManager");
+//inväntar all kod på sidan innan funktioner körs
 document.addEventListener("DOMContentLoaded", ()=>{
+    //EventListner på mitt formulär som skickar informationen från formuläret vidare till funktionen addListItem
     const form = document.getElementById("todo-form");
     form.addEventListener("submit", (event)=>{
         event.preventDefault();
@@ -664,12 +666,17 @@ function renderToDo() {
 }
 //Funktion för att tolka checkbox och spara den i localstorage, och rendera om listan
 function checkboxChange(item) {
+    console.log("Checkbox changed!");
+    // Spara ändringen i localstorage
     manager.completeListItem(item);
+    // Rendera om listan för att uppdatera gränssnittet
     renderToDo();
 }
 //Funktionen kör delete på det list item som hör till deleteknappen, och renderar om listan
 function deleteItem(item) {
+    //Sparar ändringen i localStorage
     manager.deleteListItem(item);
+    //Rendera om listan på webbsidan
     renderToDo();
 }
 renderToDo();
@@ -733,19 +740,16 @@ class listItemManager {
         this.listItems.push(listItem);
         (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
     }
-    //Funktion för att avcheckade items i listan sparas i local storage
     completeListItem(item) {
         const index = this.listItems.indexOf(item);
-        this.listItems[index].completionValue = true;
+        this.listItems[index].completionValue = !this.listItems[index].completionValue;
         (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
     }
     //Funktion för att radera items från listan och spara i local storage
     deleteListItem(item) {
-        const index = this.listItems.findIndex((listItem)=>listItem === item);
-        if (index !== -1) {
-            this.listItems.splice(index, 1);
-            (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
-        }
+        const index = this.listItems.indexOf(item);
+        this.listItems.splice(index, 1);
+        (0, _localStorageUtil.LocalStorageUtil).saveListItems(this.listItems);
     }
     //Funktion för att hämta alla listItems till sidan
     getListItems() {

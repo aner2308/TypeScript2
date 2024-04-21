@@ -1,4 +1,5 @@
 import { listItem } from "./listItem";
+
 export class LocalStorageUtil {
 
     static saveListItems(listItems: listItem[]) {

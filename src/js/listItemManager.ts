@@ -14,20 +14,23 @@ export class listItemManager {
         LocalStorageUtil.saveListItems(this.listItems);
     }
 
-    //Funktion för att avcheckade items i listan sparas i local storage
     public completeListItem(item: listItem): void {
+
         const index = this.listItems.indexOf(item);
-        this.listItems[index].completionValue = true;
+
+        this.listItems[index].completionValue = !this.listItems[index].completionValue;
+
         LocalStorageUtil.saveListItems(this.listItems);
     }
 
     //Funktion för att radera items från listan och spara i local storage
     public deleteListItem(item: listItem): void {
-        const index = this.listItems.findIndex(listItem => listItem === item);
-        if (index !== -1) {
-            this.listItems.splice(index, 1);
-            LocalStorageUtil.saveListItems(this.listItems);
-        }
+
+        const index = this.listItems.indexOf(item);
+
+        this.listItems.splice(index, 1);
+        LocalStorageUtil.saveListItems(this.listItems);
+
     }
 
     //Funktion för att hämta alla listItems till sidan

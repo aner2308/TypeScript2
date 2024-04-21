@@ -1,7 +1,10 @@
 import { listItem } from "./listItem";
 import { listItemManager } from "./listItemManager";
 
+//inväntar all kod på sidan innan funktioner körs
 document.addEventListener('DOMContentLoaded', () => {
+
+    //EventListner på mitt formulär som skickar informationen från formuläret vidare till funktionen addListItem
     const form = document.getElementById('todo-form')! as HTMLFormElement;
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -68,7 +71,7 @@ function renderToDo(): void {
                 checkBox.type = 'checkbox';
                 checkBox.className = 'check-box';
                 //Sätter checkboxens status baserat på completionValue
-                checkBox.checked = item.completionValue
+                checkBox.checked = item.completionValue;
                 // Lägg till en händelselyssnare för att hantera när checkboxen är markerad
                 checkBox.addEventListener('change', () => checkboxChange(item));
 
@@ -97,13 +100,24 @@ function renderToDo(): void {
 
 //Funktion för att tolka checkbox och spara den i localstorage, och rendera om listan
 function checkboxChange(item: listItem): void {
+
+    console.log('Checkbox changed!');
+
+    // Spara ändringen i localstorage
     manager.completeListItem(item);
+    
+    // Rendera om listan för att uppdatera gränssnittet
     renderToDo();
 }
 
+
 //Funktionen kör delete på det list item som hör till deleteknappen, och renderar om listan
 function deleteItem(item: listItem): void {
+
+    //Sparar ändringen i localStorage
     manager.deleteListItem(item);
+
+    //Rendera om listan på webbsidan
     renderToDo();
 }
 
